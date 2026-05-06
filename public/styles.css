@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    background: #f5f5f5;
+    color: #333;
+    padding: 2rem;
+}
+
+h1 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+th {
+    background: #333;
+    color: white;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 500;
+}
+
+td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover td {
+    background: #f9f9f9;
+}
+
+button {
+    background: #922b21;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+button:hover {
+    background: #c0392b;
+}
+
+a {
+    display: inline-block;
+    margin-top: 1.5rem;
+    color: #333;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p {
+    color: #888;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.converter-form {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    display: grid;
+    gap: 1rem;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    background: white;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #333;
+}
+
+.converter-form button {
+    background: #333;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+}
+
+.converter-form button:hover {
+    background: #111;
+}
+
+.result-box {
+    margin-top: 1.5rem;
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.result-box h2 {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.errors {
+    background: white;
+    color: #e74c3c;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    list-style-position: inside;
+}
+
+.app-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.app-header {
+    margin-bottom: 1.5rem;
+}
+
+.app-header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.app-content {
+    width: 100%;
+}
+
+.favorite-btn {
+    background: #333;
+    margin-right: 0.5rem;
+}
+
+.favorite-btn:hover {
+    background: #111;
+}

@@ -1,0 +1,45 @@
+<main class="container">
+  <h1 id="page-title">Favorites</h1>
+
+  {{#if favorites.length}}
+    <table aria-labelledby="page-title">
+      <thead>
+        <tr>
+          <th scope="col">From</th>
+          <th scope="col">To</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Result</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {{#each favorites}}
+          <tr>
+            <td>{{this.from}}</td>
+            <td>{{this.to}}</td>
+            <td>{{this.amount}}</td>
+            <td>{{this.result}}</td>
+            <td>
+              <form action="/favorites/{{this._id}}/delete" method="POST">
+                <button 
+                  type="submit"
+                  aria-label="Delete favorite conversion of {{this.amount}} {{this.from}} to {{this.to}}">
+                  Delete
+                </button>
+              </form>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{else}}
+    <p role="status">No favorites yet.</p>
+  {{/if}}
+
+  <nav aria-label="Page navigation">
+    <a href="/">← Back to converter</a>
+    <a href="/history">← Back to history</a>
+  </nav>
+
+</main>

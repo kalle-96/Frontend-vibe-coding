@@ -1,0 +1,56 @@
+<main class="container">
+    <h1 id="page-title">Conversion History</h1>
+
+    {{#if conversions.length}}
+    <table aria-labelledby="page-title">
+        <thead>
+            <tr>
+                <th scope="col">From</th>
+                <th scope="col">To</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Result</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each conversions}}
+            <tr>
+                <td>{{this.from}}</td>
+                <td>{{this.to}}</td>
+                <td>{{this.amount}}</td>
+                <td>{{this.result}}</td>
+                <td>
+                    <form action="/favorites" method="POST" style="display:inline;">
+                        <input type="hidden" name="from" value="{{this.from}}">
+                        <input type="hidden" name="to" value="{{this.to}}">
+                        <input type="hidden" name="amount" value="{{this.amount}}">
+                        <input type="hidden" name="result" value="{{this.result}}">
+                        <button 
+                            type="submit" 
+                            class="favorite-btn"
+                            aria-label="Save {{this.amount}} {{this.from}} to {{this.to}} as favorite">
+                            Favorite
+                        </button>
+                    </form>
+
+                    <form action="/history/{{this._id}}/delete" method="POST" style="display:inline;">
+                        <button 
+                            type="submit"
+                            aria-label="Delete conversion of {{this.amount}} {{this.from}} to {{this.to}}">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    {{else}}
+        <p role="status">No conversions yet.</p>
+    {{/if}}
+
+    <nav aria-label="Page navigation">
+        <a href="/favorites">View favorites</a>
+        <a href="/">← Back to converter</a>
+    </nav>
+</main>
