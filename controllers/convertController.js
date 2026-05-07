@@ -2,6 +2,10 @@
 const Conversion = require("../models/Conversion");
 const { validationResult } = require("express-validator");
 
+const wantsJson = (req) => {
+  return req.headers.accept?.includes("application/json");
+};
+
 const convertCurrency = async (req, res) => {
   try {
     const errors = validationResult(req);
@@ -15,6 +19,12 @@ const convertCurrency = async (req, res) => {
     }));
 
     if (!errors.isEmpty()) {
+      if (wantsJson(req)) {
+        return res.status(400).json({
+          errors: errors.array()
+        });
+      }
+
       return res.render("index", {
         errors: errors.array(),
         currencyList,
@@ -31,17 +41,30 @@ const convertCurrency = async (req, res) => {
     const data = await response.json();
 
     if (!data.rates || !data.rates[to]) {
+      if (wantsJson(req)) {
+        return res.status(500).json({
+          error: "Conversion failed"
+        });
+      }
+
       return res.status(500).send("Conversion failed");
     }
 
     const result = data.rates[to];
 
-    await Conversion.create({
+    const conversion = await Conversion.create({
       from,
       to,
       amount,
       result
     });
+
+    if (wantsJson(req)) {
+      return res.json({
+        result,
+        conversion
+      });
+    }
 
     return res.render("index", {
       result,
@@ -52,7 +75,14 @@ const convertCurrency = async (req, res) => {
 
   } catch (error) {
     console.error(error);
-    res.status(500).send("Server error");
+
+    if (wantsJson(req)) {
+      return res.status(500).json({
+        error: "Server error"
+      });
+    }
+
+    return res.status(500).send("Server error");
   }
 };
 

@@ -2,7 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+
+
 const app = express();
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 const { body } = require("express-validator");
 const { convertCurrency } = require("./controllers/convertController");
@@ -13,8 +18,8 @@ const Conversion = require("./models/Conversion");
 const Favorite = require("./models/favorite");
 
 // 🔹 middleware
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+
+
 // static files
 app.use(express.static('public'));
 
