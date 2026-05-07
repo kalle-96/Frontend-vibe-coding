@@ -13,3 +13,5 @@ This is the convertController.js: and then the code. How should I change it?
 {result && ( <h2>Result: {result.result}</h2> )} Where do I put this?
 
 Yes it works! Now I want to make it really modern and fancy
+
+It is now really fancy. Except the converted amount box is overlapping
