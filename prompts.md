@@ -1,3 +1,10 @@
+Hello! I have a currency converter page that has backend but not frontend. I'd like to have a react frontend added to it. Here are my files.
+
+Can you go through with what you made in here instead of the zip?
+
+It does show the form. dropdowns, convert button but the results are not showing
+
+
 Ok lets start from the beginning. I have discarded all the changes. We can use any of these that you seem fit the best: React, Next.js, or Vue
 
 Yes, localhost 3000 shows the old project and 5173 shows the react
